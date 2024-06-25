@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import the.coyote.coyote.model.dto.ListaProdutosResponseDTO;
-import the.coyote.coyote.model.entity.ProdutoEntity;
 import the.coyote.coyote.repository.ProdutoRepository;
 import the.coyote.coyote.service.ProdutoService;
 

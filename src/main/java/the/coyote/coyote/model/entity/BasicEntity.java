@@ -1,46 +1,43 @@
 package the.coyote.coyote.model.entity;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
-@Entity
-@Table(name = "basicentity")
-public abstract class BasicEntity implements Serializable {
+@MappedSuperclass
+public abstract class BasicEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Schema(description = "Identificador único usado no controle interno.")
     private Long id;
 
     @CreatedBy
+    @Schema(description = "Contém o nome do usuário do sistema que incluiu o registro.")
     private String createdBy;
 
     @CreatedDate
+    @Schema(description = "Data em que o registro foi cadastrado.")
     private LocalDateTime createdDate;
 
     @LastModifiedBy 
+    @Schema(description = "Último usuário que modificou o registro.")
     private String lastModifieldBy;
 
     @LastModifiedDate
+    @Schema(description = "Data da última modificação.")
     private LocalDateTime lastModifieldDate;
         
 }

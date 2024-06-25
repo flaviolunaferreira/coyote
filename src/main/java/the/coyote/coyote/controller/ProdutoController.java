@@ -1,11 +1,16 @@
 package the.coyote.coyote.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import the.coyote.coyote.model.dto.ListaProdutosResponseDTO;
 import the.coyote.coyote.service.ProdutoService;
 
@@ -17,10 +22,10 @@ public class ProdutoController {
     private ProdutoService produtoService;
    
     @GetMapping("/")
-    public ResponseEntity<ListaProdutosResponseDTO> get() {
-        try {
-            
-            return new ResponseEntity<>("GetAll Results", HttpStatus.OK);
+    @Operation(summary = "Lista reduzida dos produtos cadastrados.")
+    public ResponseEntity<List<ListaProdutosResponseDTO>> get(@RequestParam Integer pageNumber, @RequestParam Integer pageSize ) {
+        try {    
+            return ResponseEntity.ok().body(produtoService.getAll(pageNumber, pageSize));
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

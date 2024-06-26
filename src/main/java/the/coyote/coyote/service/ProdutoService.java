@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import the.coyote.coyote.model.dto.ListaProdutosResponseDTO;
+import the.coyote.coyote.model.dto.Produtos.ListaSimplesDeProdutosDTO;
 
 @Service
 public interface ProdutoService {
 
-    List<ListaProdutosResponseDTO> getAll(Integer pageNumber, Integer pageSize);
+    List<ListaSimplesDeProdutosDTO> getAll(Integer pageNumber, Integer pageSize);
 }

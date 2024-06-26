@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
-import the.coyote.coyote.model.dto.ListaProdutosResponseDTO;
+import the.coyote.coyote.model.dto.Produtos.ListaSimplesDeProdutosDTO;
 import the.coyote.coyote.service.ProdutoService;
 
 @RestController
@@ -23,7 +23,7 @@ public class ProdutoController {
    
     @GetMapping("/")
     @Operation(summary = "Lista reduzida dos produtos cadastrados.")
-    public ResponseEntity<List<ListaProdutosResponseDTO>> get(@RequestParam Integer pageNumber, @RequestParam Integer pageSize ) {
+    public ResponseEntity<List<ListaSimplesDeProdutosDTO>> get(@RequestParam Integer pageNumber, @RequestParam Integer pageSize ) {
         try {    
             return ResponseEntity.ok().body(produtoService.getAll(pageNumber, pageSize));
         } catch (Exception e) {
